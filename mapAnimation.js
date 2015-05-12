@@ -57,7 +57,9 @@ function runGame() {
 
 	function listenPlayerInput() {  /*objekti-parametri tai null-parametri,
 		tai null.parametri*/
-		if (object == null) --> //listenTo nuolinäppämet again
+		if (object == null) {
+			//listenTo nuolinäppäimet again
+		} --> //listenTo nuolinäppämet again
 		else --> //johtaa tehtävän tekemiseen 
 
 	}
