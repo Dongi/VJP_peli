@@ -64,14 +64,8 @@ var itemArray = [
 
 
 
-//COLLISION CHECK
-function collisionCheck(p, object) { //p as player
-	if (p.x + p.charWidth > object.x &&
-		p.x + p.charWidth < object.x + object.icon.width &&
-		p.y + p.charHeight > object.y &&
-		p.y + p.charHeight < object.y + object.icon.height);
+function openMission(item) {
 
-		openMission();
 }
 
 

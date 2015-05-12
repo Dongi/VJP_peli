@@ -21,7 +21,6 @@ var pressD = false;
 
 
 
-
 /*Creating the canvas before running the game. */
 function createCanvas() {
 	canvas = document.getElementById("canvasElement");
@@ -46,7 +45,7 @@ function runGame() {
 
 /*-----------------------------------------------------------------------------------*/
 
-	listenToKeyboard();	
+	listenToArrows();	
 	requestAnimationFrame(game);
 	
 	/*metodi, joka saa boolean parametrina sen, 
@@ -55,15 +54,53 @@ function runGame() {
 
 	//"oikea vastaus -metodi kutsuisi AL:n metodia null.parametrilla."
 
-	function listenPlayerInput() {  /*objekti-parametri tai null-parametri,
-		tai null.parametri*/
-		if (object == null) {
-			//listenTo nuolinäppäimet again
-		} --> //listenTo nuolinäppämet again
-		else --> //johtaa tehtävän tekemiseen 
+	// function gameState() {  /*objekti-parametri tai null-parametri,
+	// 	tai null.parametri*/
+	// 	if (object == null) {
+	// 		//listenTo nuolinäppäimet again
+	// 	} --> //listenTo nuolinäppämet again
+	// 	else --> //johtaa tehtävän tekemiseen 
 
+	// }
+
+	//COLLISION CHECK
+	/**/
+	function collisionCheck(p, currentCont) { //p as player
+		switch(currentCont) {
+			case N_America:
+			var items = itemArray[0][0];
+			break;
+			case Europe:
+			var items = itemArray[0][1];
+			break;
+			case Asia:
+			var items = itemArray[0][2];
+			break;
+			case S_Aerica:
+			var items = itemArray[1][0];
+			break;
+			case Africa:
+			var items = itemArray[1][1];
+			break;
+			case Australia:
+			var items = itemArray[1][2];
+			break;
+		}
+
+
+		for (i == 0; i < items.length; i++) {
+			if (p.x + p.charWidth > items[i].x &&
+				p.x + p.charWidth < items[i].x + items[i].icon.width &&
+				p.y + p.charHeight > items[i].y &&
+				p.y + p.charHeight < items[i].y + items[i].icon.height)
+				{
+					return items[i];		//returns the item-object
+				}	//openMission(items[i]);
+				else {
+					return null;
+				}	
+		} 
 	}
-
 
 	function game() {					//loop works
 		drawGame();
@@ -79,7 +116,7 @@ function runGame() {
 
 	/*all keyboard activities defined here.*/
 	//rename it
-	function listenToKeyboard() {
+	function listenToArrows() {
 		$(document).keydown(function(key) {	   //WORKS!
    			switch (key.keyCode){
 				case up:
@@ -203,17 +240,6 @@ function runGame() {
 		ctx.drawImage(icon, cont[1].x, cont[1].y);
 	}
 
-	//COLLISION CHECK
-	function collisionCheck(p, object) { //p as player
-		if (p.x + p.charWidth > object.x &&
-			p.x + p.charWidth < object.x + object.icon.width &&
-			p.y + p.charHeight > object.y &&
-			p.y + p.charHeight < object.y + object.icon.height);
-
-			//kutsuisi toista funktiota objektilla
-		/*launches an inner loop for the mission, and when the mission ends,
-		*/
-	}
 
 	/*clears the canvas*/
 	function clearCanvas() {
