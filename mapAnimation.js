@@ -19,8 +19,6 @@ var pressR = false;
 var pressU = false;
 var pressD = false;
 
-
-
 /*Creating the canvas before running the game. */
 function createCanvas() {
 	canvas = document.getElementById("canvasElement");
@@ -34,38 +32,51 @@ function createCanvas() {
 	}
 }
 
-/*The game happens in this function. */
+/*The GAME happens in this function. */
 function runGame() {
-	/*variables*/
-	var p = new Player(cCenter.x, cCenter.y);   //player created
-	//var currentCont = continents[0][1];			//first map Eruope selected
-	var position = p.position;					  //position is at the centre
-	var direction = p.direction;				  //initial direction south by default
+	/* PLAYER OBJECT CREATED. */
+	var p = new Player(cCenter.x, cCenter.y);
 
+	requestAnimationFrame(game);			//function call
 
-/*-----------------------------------------------------------------------------------*/
+	/*This loops the game.*/
+	function game() {	
+		//listenToArrows();	
 
-	listenToArrows();	
-	requestAnimationFrame(game);
+		//COLLISION CHECK
+		var ifCollision = collisionCheck(p, currentCont);		//returns wither item-object or null	
+		gameState(ifCollision);
+		
+		drawGame();
+		requestAnimationFrame(game);
+	}
+
+	/*Here are all elements that
+	has to be drawn in the game.*/
+	function drawGame() {
+		clearCanvas();
+		drawMap();
+		drawItems();
+		drawPlayer();
+	}
 	
 	/*metodi, joka saa boolean parametrina sen, 
 	kuunteleeko listenToKeyboard-metocia cvai jotain muuta metodia,
 	jota tarvitaan tehtvävä-näkymässä.*/
 
 	//"oikea vastaus -metodi kutsuisi AL:n metodia null.parametrilla."
+	function gameState(object) {  /*object is either an Item or null tai null.parametri*/
+		if (object == null) {
+			listenToArrows();//listenTo nuolinäppäimet again
+		} else {
+			console.log("openMission(object);")
+			openMission(object);
+		} //johtaa tehtävän tekemiseen 
+	}
 
-	// function gameState() {  /*objekti-parametri tai null-parametri,
-	// 	tai null.parametri*/
-	// 	if (object == null) {
-	// 		//listenTo nuolinäppäimet again
-	// 	} --> //listenTo nuolinäppämet again
-	// 	else --> //johtaa tehtävän tekemiseen 
-
-	// }
-
-	//COLLISION CHECK
-	/**/
-	function collisionCheck(p, currentCont) { //p as player
+	/*COLLISION CHECK*/
+	function collisionCheck(p, currentCont) { 		//p as player
+		var output;
 		switch(currentCont) {
 			case N_America:
 			var items = itemArray[0][0];
@@ -76,7 +87,7 @@ function runGame() {
 			case Asia:
 			var items = itemArray[0][2];
 			break;
-			case S_Aerica:
+			case S_America:
 			var items = itemArray[1][0];
 			break;
 			case Africa:
@@ -86,36 +97,60 @@ function runGame() {
 			var items = itemArray[1][2];
 			break;
 		}
-
-
-		for (i == 0; i < items.length; i++) {
-			if (p.x + p.charWidth > items[i].x &&
+		for (var i = 0; i < items.length; i++) {
+			if 	(((p.x + p.charWidth > items[i].x &&
 				p.x + p.charWidth < items[i].x + items[i].icon.width &&
 				p.y + p.charHeight > items[i].y &&
-				p.y + p.charHeight < items[i].y + items[i].icon.height)
-				{
-					return items[i];		//returns the item-object
+				p.y + p.charHeight < items[i].y + items[i].icon.height) ||
+				
+				(p.x < items[i].x + items[i].icon.width &&
+				p.x > items[i].x &&
+				p.y < items[i].y + items[i].icon.height &&
+				p.y > items[i].y) ||
+
+				(p.x > items[i].x &&
+				p.x < items[i].x + items[i].icon.width &&
+				p.y + p.charHeight > items[i].y &&
+				p.y + p.charHeight < items[i].y + items[i].icon.height) ||
+
+				(p.x + p.charWidth > items[i].x &&
+				p.x + p.charWidth < items[i].x + items[i].icon.width &&
+				p.y > items[i].y &&
+				p.y < items[i].y + items[i].icon.height))
+				||
+				((items[i].x + items[i].icon.width > p.x &&
+				items[i].x + items[i].icon.width < p.x + p.charWidth &&
+				items[i].y + items[i].icon.height > p.y &&
+				items[i].y + items[i].icon.height < p.y + p.charHeight) ||
+				
+				(items[i].x < p.x + p.charWidth &&
+				items[i].x > p.x &&
+				items[i].y < p.y + p.charHeight &&
+				items[i].y > p.y) ||
+
+				(items[i].x > p.x &&
+				items[i].x < p.x + p.charWidth &&
+				items[i].y + items[i].icon.height > p.y &&
+				items[i].y + items[i].icon.height < p.y + p.charHeight) ||
+
+				(items[i].x + items[i].icon.width > p.x &&
+				items[i].x + items[i].icon.width < p.x + p.charWidth &&
+				items[i].y > p.y &&
+				items[i].y < p.y + p.charHeight)
+				))
+				{	
+					//console.log(items[i]);
+					return items[i];		//returns the item-object, interrupting the for-loop
 				}	//openMission(items[i]);
 				else {
-					return null;
-				}	
+					var output = null;
+				}
 		} 
-	}
-
-	function game() {					//loop works
-		drawGame();
-		requestAnimationFrame(game);
-	}
-
-	function drawGame() {
-		clearCanvas();
-		drawMap();
-		drawItems();
-		drawPlayer();
-	}
-
-	/*all keyboard activities defined here.*/
-	//rename it
+		//console.log(output);
+		return output;
+	}	//end of collisionCheck(...);
+	/*The arrow-keys' activities 
+	are defined here.*/
 	function listenToArrows() {
 		$(document).keydown(function(key) {	   //WORKS!
    			switch (key.keyCode){
@@ -141,12 +176,10 @@ function runGame() {
 				break;
 			}
 		});
-
 		$(document).keyup(function(key) {   //WORKS!
 			if (key.keyCode == left) {
 				key.preventDefault();
-				if(pressR){     //leftkey up and rightkey down
-					//console.log("right clicked while left released");
+				if(pressR){
 					p.dx = 1
 				}
 				else{ 
@@ -186,33 +219,23 @@ function runGame() {
 				pressD = false;
 			}
 		});
-		// /*help-function to determine the coordinate*/
-		// $('canvas').click(function(e) {
-		// 	console.log(e.)
-		// })
 	}
 
-/*Here comes a collection of functions related to the game.*/
+	/*DRAWING FUNCTIONS-----------------------------------------------------------------------------------*/
+	
+	/*map*/
 	function drawMap() {
-		//conditions for choosing which map to display
-		//console.log(currentCont.img);
 		ctx.drawImage(currentCont.img, 0, 0);
 	}
-	//drawMap();	//temporary
-
-
-	/*draws the player*/
+	/*the player*/
 	function drawPlayer() {
-		//console.log("test");
-				//moves the player and considers the spritets	
-		
 	    console.log(p.x, p.y);
 		p.move();
 		mapUpdate(currentCont, testBoundaries(p), p);
 		p.render();     //LOGIC with spritets
 		
 	}
-
+	/*the items/icons*/
 	function drawItems() {
 		switch(currentCont) {
 			case N_America:
@@ -235,20 +258,17 @@ function runGame() {
 			var cont = itemArray[1][2];
 			break;
 		}
-		/*two*/
+		//two icons for each continent
 		ctx.drawImage(icon, cont[0].x, cont[0].y);
 		ctx.drawImage(icon, cont[1].x, cont[1].y);
 	}
-
-
-	/*clears the canvas*/
+	/*CLEARING FUNCTION*/
 	function clearCanvas() {
 		ctx.clearRect(0, 0, cWidth, cHeight);
 	}
 }
 
-
-
+/*this launches the whole game*/
 window.onload = createCanvas;
 
 

@@ -65,13 +65,8 @@ var itemArray = [
 
 
 function openMission(item) {
-
+	//this method should launch the 
 }
-
-
-/*creating the item-objects*/
-// var rome = Item();
-// var 
 
 
 

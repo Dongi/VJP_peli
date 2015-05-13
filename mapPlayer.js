@@ -16,23 +16,15 @@ playerImage.onload = function() {
 }
 
 function Player(initX, initY) {     //NOTE: player's image doesn't belong to player-object
-		//this.ctx = ctx;
 		this.x = initX;
 		this.y = initY;
 		this.spritetX = 0;          //upper left spritet character
 		this.spritetY = 0;			//...
-		this.charWidth = 44;			//width of a sprite character, same for all
-		this.charHeight = 44;			//height of ...
-		//this.direction = 0;			//direction can be 0, 1, 2, and 3, 
+		this.charWidth = 44;		//width of a sprite character, same for all
+		this.charHeight = 44;		//height of ...
 		this.speed = 5;				//corresponding down, left, right, up
 		this.dx = 0;
 		this.dy = 0;
-		/*proably to be erased...*/
-		// updatePosition: function(dX, dY) {
-		// 	switch(dX, dY) {
-		// 		case (0, 1): 
-		// 	}
-		// }				//returned player is an object with x, y, direction etc...
 }
 
 Player.prototype.setPosition = function(x, y) {
@@ -68,10 +60,8 @@ Player.prototype.move = function() {
 		this.chooseSpritet(dLeft,animation);
 		animation === 3 ? animation = 0 : animation +=1;
 	}
-
 	/*updating the current position. */
 	//console.log(this.x, this.y);				//temporarily
-
 	this.setPosition(this.x + this.dx * this.speed, this.y + this.dy * this.speed);
 }
 
