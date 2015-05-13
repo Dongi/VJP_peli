@@ -1,23 +1,4 @@
-/*Miten lisätä itemsejä pelilaudalle?*/
 
-/*
-Location-items and coordinates
-
-Montreal 505, 240
-Havana 455, 455
-
-Cap Horn 325, 491
-Buenos Aires 400, 313
-
-Helsinki 390, 270
-Rome 280, 415
-
-Kilimanjaro 496, 236
-Timbuktu 211, 96
-
-Great Wall 406, 300
-Mumbai 146, 365
-*/
 /*Item-luokka
 parametreiksi koordinaatit, kuva, laukaisu tehtävänäkymään
 törmäykseen reagointi*/
@@ -65,7 +46,17 @@ var itemArray = [
 
 
 function openMission(item) {
-	//this method should launch the 
+	console.log("opening mission");
+	ctx.fillStyle = "#FFF000";
+	ctx.fillRect(0, 0, cWidth, cHeight);//this method should launch the mission task corresponding to the item
+	ctx.fillStyle = "#000000";
+	ctx.fillText("Mission-view will come here", 100, 300);
+
+	$(document).keydown(function(e) {
+		if (e.keyCode === 13) {
+			animationState = true;
+		}
+	})
 }
 
 

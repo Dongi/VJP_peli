@@ -19,6 +19,12 @@ var pressR = false;
 var pressU = false;
 var pressD = false;
 
+/*two-way flag for keyboard activity. */
+var arrowsOn = true;
+
+/*determines the state of the loop. */
+var animationState = true;
+
 /*Creating the canvas before running the game. */
 function createCanvas() {
 	canvas = document.getElementById("canvasElement");
@@ -28,27 +34,53 @@ function createCanvas() {
 	ctx = canvas.getContext("2d");
 	var ctxSupport = ctx !== null;
 	if (ctxSupport && playerImageLoaded) {
-		runGame();
+		prologue();
+		//runGame();
 	}
+}
+
+/*Progolue*/
+function prologue() {
+
+	//only test version-------------------
+	ctx.fillStyle = "#66CC00"; //color for the background
+	ctx.fillRect(0, 0, cWidth, cHeight);
+	ctx.fillStyle = "#000000"; //color for the text
+	ctx.font = "30px Consolas";
+	ctx.fillText("press enter to begin!",100, 300);
+	//------------------------------------
+	//actual prologue will come here, a better picture would be nice as well
+
+	$(document).keydown(function(e) {
+		if (e.keyCode === 13) {					//'13' corresponds to 'enter'
+			runGame();
+		}
+	})
+
 }
 
 /*The GAME happens in this function. */
 function runGame() {
 	/* PLAYER OBJECT CREATED. */
 	var p = new Player(cCenter.x, cCenter.y);
-
+	listenToArrows(true);					//arrow-keys activated
 	requestAnimationFrame(game);			//function call
 
 	/*This loops the game.*/
 	function game() {	
-		//listenToArrows();	
-
+		drawGame();		//Game drawn
 		//COLLISION CHECK
 		var ifCollision = collisionCheck(p, currentCont);		//returns wither item-object or null	
-		gameState(ifCollision);
 		
-		drawGame();
-		requestAnimationFrame(game);
+		if (ifCollision !== null) {
+			animationState = false;
+		}
+	
+		if (animationState == true) {		//if this loop is not entered, game (map-view) pauses
+			requestAnimationFrame(game);
+		}
+		
+		gameState(ifCollision);
 	}
 
 	/*Here are all elements that
@@ -65,13 +97,18 @@ function runGame() {
 	jota tarvitaan tehtvävä-näkymässä.*/
 
 	//"oikea vastaus -metodi kutsuisi AL:n metodia null.parametrilla."
-	function gameState(object) {  /*object is either an Item or null tai null.parametri*/
-		if (object == null) {
-			listenToArrows();//listenTo nuolinäppäimet again
+	function gameState(item) {  /*object is either an Item or null tai null.parametri*/
+		if (item == null) {	//null means that no collisions
+			return;
 		} else {
-			console.log("openMission(object);")
-			openMission(object);
-		} //johtaa tehtävän tekemiseen 
+			listenToArrows(false);
+			animationState = false;
+			console.log(item);
+			openMission(item);
+		} /*johtaa tehtävän tekemiseen
+		TEHTÄVÄ-oliossa täytyy olla komento, joka
+		palauttaa listenToArrows(TRUE), jotta peli voisi jatkua*/
+
 	}
 
 	/*COLLISION CHECK*/
@@ -98,6 +135,7 @@ function runGame() {
 			break;
 		}
 		for (var i = 0; i < items.length; i++) {
+			//Checking the collision conditions
 			if 	(((p.x + p.charWidth > items[i].x &&
 				p.x + p.charWidth < items[i].x + items[i].icon.width &&
 				p.y + p.charHeight > items[i].y &&
@@ -151,8 +189,10 @@ function runGame() {
 	}	//end of collisionCheck(...);
 	/*The arrow-keys' activities 
 	are defined here.*/
-	function listenToArrows() {
-		$(document).keydown(function(key) {	   //WORKS!
+	function listenToArrows(boolean) {
+		if (boolean === true) {
+		console.log("in if...");
+		$(document).keydown(function(key) {	   //WORKS!	
    			switch (key.keyCode){
 				case up:
 				key.preventDefault();
@@ -218,6 +258,24 @@ function runGame() {
 				}
 				pressD = false;
 			}
+		});
+		} else {
+		/*all relevant variables to inactive state
+		ARROW-KEYS STOP WORKING HERE*/
+
+			pressD = false;
+			pressU = false;
+			pressR = false;
+			pressL = false;
+			p.dx = 0;
+			p.dy = 0;
+		}
+	}
+
+	function muteArrows() {
+		console.log("Mute arrows");
+		$(document).keydown(function(e) {
+
 		});
 	}
 
