@@ -102,24 +102,23 @@ function openMission(item) {
 }
 /*draws the mission view*/
 function drawMission(mission) {
+	ctx.font="30px Palatino";			//for later texts
 	ctx.drawImage(mission.img, 0, 0);
 	currentMission = mission;
 	// var correctAnswer = mission.answer;
 }
 
-/*reactions that happen after mission success*/
-function missionSuccess(mission) {
 
-}
-
-
-function missionFailure(mission) {
-
-}
 
 function submitAnswer() {
-	console.log($("#submit").val());
-	var candidate = $("#submit").val().trim().toLowerCase()
+	console.log($("#answerCandidate").val() + "submitted String");
+
+
+	
+	var candidate = $("#answerCandidate").val()//.trim().toLowerCase();
+	//console.log(candidate);
+	//console.log(currentMission.answer);
+
 	if (candidate === currentMission.answer) {
 		currentMission.state = true;
 		missionSuccess(currentMission);
@@ -131,9 +130,20 @@ function submitAnswer() {
 			// console.log(input);
 }
 
+/*reactions that happen after mission success*/
+function missionSuccess(mission) {
+	currentMission.state = true;
+	ctx.fillText("SUCCESS", 50, 500);	//better if .show()
+}
+
+
+function missionFailure(mission) {
+	ctx.fillText("FAILURE", 50, 500);	//better if .show()
+}
 
 function backToMap() {
-
+	console.log("back to map");
+	animationState = true;
 }
 
 

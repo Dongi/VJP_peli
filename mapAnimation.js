@@ -87,10 +87,9 @@ function runGame() {
 		drawGame();		//Game drawn
 		//COLLISION CHECK
 		var ifCollision = collisionCheck(p, currentCont);		//returns wither item-object or null	
-		if (ifCollision !== null) {
+		if (ifCollision !== null) {			//if collision
 			animationState = false;
 		}
-	
 		if (animationState == true) {		//if this loop is not entered, game (map-view) pauses
 			requestAnimationFrame(game);
 		}
