@@ -3,6 +3,8 @@ var ctx = null;
 var cWidth = 740;
 var cHeight = 560;
 var cCenter = {x: cWidth/2, y: cHeight/2};
+var initWidth = cCenter.x;
+var initHeight = cCenter.y;
 
 /*setupt the initial map*/
 var currentCont = continents[0][1];			//first map Eruope selected
@@ -13,6 +15,7 @@ var up = 38;
 var right = 39;
 var down = 40;
 var ent = 13;
+var space = 32;
 
 /*registers which key(s) pressed.*/
 var pressL = false;
@@ -20,22 +23,29 @@ var pressR = false;
 var pressU = false;
 var pressD = false;
 var pressEnt = false;
-
+var pressSpace = false;
 /*two-way flag for keyboard activity. */
 var arrowsOn = true;
 
 /*determines the state of the loop. */
 var animationState = true;
 
+/*PLAYER*/
+//var p = null;
 /*Creating the canvas before running the game. */
 function createCanvas() {
 	canvas = document.getElementById("canvasElement");
 	canvas.width = cWidth;
 	canvas.height = cHeight;
 
+	/*control functions for the other html-elements*/
+	hideButtons();
+	toHelpText(hText);
+	/*---------------------------------------------*/
+
 	ctx = canvas.getContext("2d");
 	var ctxSupport = ctx !== null;
-	if (ctxSupport && playerImageLoaded) {
+	if (ctxSupport && playerImageLoaded && openingImageLoaded) {
 		prologue();
 		//runGame();
 	}
@@ -43,16 +53,7 @@ function createCanvas() {
 
 /*Progolue*/
 function prologue() {
-//	only test version-------------------
-	ctx.fillStyle = "#66CC00"; //color for the background
-	ctx.fillRect(0, 0, cWidth, cHeight);
-	ctx.fillStyle = "#000000"; //color for the text
-	ctx.font = "30px Consolas";
-	ctx.fillText("press enter to begin!",100, 300);
-	//------------------------------------
-	//actual prologue will come here, a better picture would be nice as well
-	//console.log("in prologue");
-	//if (pressEnt === false) {
+	ctx.drawImage(openingImage, 0, 0);
 	$(document).keydown(function(e) {	
 		if (e.keyCode === ent) {					//'13' corresponds to 'enter'
 			if(!pressEnt) {							//this if gets entered only for once
@@ -68,7 +69,7 @@ function runGame() {
 	/* PLAYER OBJECT CREATED. */
 	console.log("running game");
 	console.log(pressEnt);
-	var p = new Player(cCenter.x, cCenter.y);
+	var p = new Player(initWidth, initHeight);
 	listenToArrows(true);					//arrow-keys activated
 	requestAnimationFrame(game);			//function call
 
@@ -96,7 +97,6 @@ function runGame() {
 		drawItems();
 		drawPlayer();
 	}
-	
 	/*metodi, joka saa boolean parametrina sen, 
 	kuunteleeko listenToKeyboard-metocia cvai jotain muuta metodia,
 	jota tarvitaan tehtvävä-näkymässä.*/
@@ -112,7 +112,7 @@ function runGame() {
 			openMission(item);
 		} /*johtaa tehtävän tekemiseen
 		TEHTÄVÄ-oliossa täytyy olla komento, joka
-		palauttaa listenToArrows(TRUE), jotta peli voisi jatkua*/
+		palauttaa listenToArrows(TRUE), jotta peli voisi jatkua. */
 
 	}
 
@@ -283,7 +283,6 @@ function runGame() {
 
 		});
 	}
-
 	/*DRAWING FUNCTIONS-----------------------------------------------------------------------------------*/
 	
 	/*map*/

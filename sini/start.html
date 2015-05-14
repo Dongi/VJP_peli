@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="gamestyle.css"/>
+        <script type="text/javascript" src="places.js"></script>
+		 <script type="text/javascript">
+        	var can, ctx;
+        	
+        	function init() {
+            	can = document.getElementById("can");
+            	ctx = can.getContext("2d");
+            	drawText();
+        	}
+ 
+        	function drawText() {
+
+                var story = "Press start to play game."
+
+            	ctx.fillStyle = "#3D6935";
+            	ctx.font = "12pt Palatino";
+            	ctx.textAlign = "center";
+            	ctx.textBaseline = "middle";
+            	ctx.fillText(story, can.width / 2 , can.height / 1.05);
+        	}
+
+
+		 </script>
+
+	<body onload="init()">
+
+		<canvas id = "can" width = "740" height = "560" style="background:url(world.jpg)" style = "opacity:0.6"></canvas>
+
+        <div id = "prologue">
+                <div id = "prologueText">Summer is coming. Sun shines. Birds sing. Rami Eskelinen, a worker of the travel 
+
+agency Friend é Loyal, is cleaning up their lost-and-found-box before a long 
+
+holiday. He sees a little camera. It has been a year since it was found, and the tag 
+
+says: ”Löydetty Sibeliusmonumentin juurelta” , which means: found from at the 
+
+feet of the Sibelius-monument.
+
+Rami is in a delighful mood. He switches on the camera and browses the 
+
+pictures... 
+
+
+It seems the owner is a real globetrotter! Colosseum, that shell-like opera house, 
+
+a gigantic red rock in the middle of nowhere, the Great Wall, tropical beaches, 
+
+crowded streets of India… the list is so long.
+
+
+Strangely, almost all pictures are about a sight or a beautiful landscape. There is 
+
+hardly any picture focusing on people. It seems the owner isn’t that interested in 
+
+people at all! But, the last picture is an exception: it’s from Paris. Two friends are 
+
+hands on each other’s shoulders, posing at the Eiffel Tower. One looks like 
+
+Indian, the other one caucasian. 
+
+
+Wait! The caucasian person looks familiar to 
+
+Rami. Rami recognizes Paul, a friend Rami got to know during his student 
+
+exchange year in Toulouse. Nowadays Paul is a restaurant keeper in Paris. Could 
+
+this camera belong to Paul? If not, then it must belong to that Indian guy. Rami 
+
+must find it out… </div>
+        </div>
+
+	</body>
+
+	<footer id="buttons" >
+
+		<div id="start"><img id="startButton" src="startArrow.png"/></div>
+
+	</footer>
+
+
+</html>

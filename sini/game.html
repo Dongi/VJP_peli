@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="gamestyle.css"/>
+        <script type="text/javascript" src="places.js"></script>
+        <script type="text/javascript" src="canvasInput.js"></script>
+		 <script type="text/javascript">
+        	var can, ctx;
+
+        	function init() {
+            	can = document.getElementById("can");
+            	ctx = can.getContext("2d");
+            	drawText();
+                // textBox();
+                
+        	}
+ 
+        	function drawText() {
+            	ctx.fillStyle = "white";
+                ctx.textShadow = "2px, 2px, black"
+            	ctx.font = "12pt Palatino";
+            	ctx.fontStyle = "bold";
+            	ctx.textAlign = "center";
+            	ctx.textBaseline = "middle";
+            	ctx.fillText("Welcome to Rome.", can.width / 2 , can.height / 4);
+                ctx.fillText("Rami has found his way to the Colosseum, the largest amphitheatre in the world.", can.width / 2.2 , can.height / 1.6);
+                ctx.fillText("To get your next clue, enter the name of the food Rami had with his friend Paul in Paris.", can.width / 2.2, can.height / 1.5);
+        	}
+
+            //  function textBox(){
+            //     var input = new CanvasInput({
+            //     canvas: document.getElementById('can'),
+            //     x: 100,
+            //     y: 500,
+            //     fontFamily: 'Palatino',
+            //     width: 300,
+            //     placeHolder: 'Enter your answer here...',
+            //     backgroundColor: '#000000'
+            //     });
+            // }
+
+
+		 </script>
+
+	<body onload="init()" >
+
+		<canvas id = "can" width = "740" height = "560" style="background:url(colosseum2.jpg)" ></canvas>
+
+        <!-- <input type="text" style="position: absolute; opacity: 0; pointer-events: none; left: 411px; top: 0px; width: 300px; height: 18px; z-index: 0;">
+        </input> -->
+
+        <div id = "help">
+
+            <p id ="title">Instructions</p>
+            <div id="helpText"> 
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+            </div>
+        </div>
+
+	</body>
+
+	<footer id="buttons" >
+
+		<div id="return" ><img id="returnButton" src="returnArrow.png"/></div>
+
+        <div id="textBox">
+            <input type="text"></input>
+            <button id="check">Check</button>
+        </div>
+
+        <div id="clues">
+
+        </div>
+
+		<div id="next"><img id="nextButton" src="nextArrow.png"/></div>
+
+	</footer>
+
+
+</html>
+

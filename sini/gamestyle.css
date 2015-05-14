@@ -1,0 +1,192 @@
+body{
+	display: inline-block;
+	width: 100%;
+}
+
+canvas {
+/*
+background-color: #3DCC5F ;
+rgba(61, 204, 95, 0.4)
+background-image: url(paris.jpg);*/
+/*opacity: 0.6;*/
+float:left;
+
+}
+
+#buttons{
+
+background-color:#ffffff;  /* #FAE8F7(babypink),  #C2ECFC(babyblue), #E1F5DF(babygreen) #90EE90 parasväri*/
+width:740px;
+border-radius: 3px;
+
+}
+
+#return {
+
+
+/*opacity: 0.7;
+border:1px, black; /*#F7A1E7
+border-radius: 8px;
+font-size: 20px;
+font-family:"Coronetscript";
+display:inline-block;*/
+	color:black;
+	font-size: 20px;
+	font-family:"Coronetscript";
+	opacity:0.5;
+	background-color: #ffffff;
+	border-radius: 3px;
+	border: 1px, solid black;
+	width: 80px;
+	float:left;
+	-webkit-transform: rotate(-40deg);
+
+}
+
+#next {
+
+display:inline-block;
+opacity: 0.7;
+border:1px, #F7A1E7;
+border-radius: 8px;
+font-size: 20px;
+font-family:"Palatino Linotype";
+float:right;
+width: 80px;
+background-color: #ffffff ; /*#9DF794*/
+opacity:0.5;
+-webkit-transform: rotate(40deg);
+
+}
+
+#textBox{
+	float:left;
+	padding-top:30px;
+	padding-left: 90px;
+}
+
+#clues{
+	float:left;
+}
+
+#start {
+
+display:inline-block;
+opacity: 0.7;
+border:1px, #F7A1E7;
+border-radius: 8px;
+font-size: 20px;
+font-family:"Palatino Linotype";
+float:right;
+width: 80px;
+background-color: #ffffff ; /*#9DF794*/
+opacity:0.5;
+-webkit-transform: rotate(40deg);
+
+}
+
+#again {
+
+	color:black;
+	font-size: 20px;
+	font-family:"Coronetscript";
+	opacity:0.5;
+	background-color: #ffffff;
+	border-radius: 3px;
+	border: 1px, solid black;
+	width: 80px;
+	display:inline-block;
+	-webkit-transform: rotate(-40deg);
+
+}
+
+#return:hover{
+	opacity:0.8;
+}
+
+#next:hover{
+	opacity:0.8;
+}
+
+#start:hover{
+	opacity:0.8;
+}
+
+#again:hover{
+	opacity:0.8;
+}
+
+#title{
+
+	padding-left:80px;
+	padding-top:60px;
+	font-family: "Palatino";
+	font-size: 20px;
+
+}
+
+#help{
+
+	float:left;
+	background-image:url(papyrus.gif);
+	width:400px;
+	height:512px;
+	opacity: 0.6;
+	
+}
+
+#helpText{
+
+	font-family:"Palatino";
+	font-size: 12px;
+	width: 250px;
+	height: 300px;
+	padding-left: 80px;
+	padding-top: 20px;
+
+}
+
+#prologue{
+
+	float:left;
+	background-image:url(papyrus.gif);
+	width:400px;
+	height:512px;
+	opacity:0.6;
+	
+}
+
+#prologueText{
+
+	font-family:"Palatino Linotype";
+	font-size: 12px;
+	width: 250px;
+	height: 300px;
+	padding-left: 80px;
+	padding-top: 80px;
+
+}
+
+#end{
+
+	float:left;
+	background-image:url(papyrus.gif);
+	width:400px;
+	height:512px;
+	opacity:0.6;
+	
+}
+
+#endText{
+
+	font-family:"Palatino Linotype";
+	font-size: 12px;
+	width: 250px;
+	height: 300px;
+	padding-left: 80px;
+	padding-top: 80px;
+
+}
+
+
+
