@@ -12,12 +12,14 @@ var left = 37;
 var up = 38;
 var right = 39;
 var down = 40;
+var ent = 13;
 
 /*registers which key(s) pressed.*/
 var pressL = false;
 var pressR = false;
 var pressU = false;
 var pressD = false;
+var pressEnt = false;
 
 /*two-way flag for keyboard activity. */
 var arrowsOn = true;
@@ -41,8 +43,7 @@ function createCanvas() {
 
 /*Progolue*/
 function prologue() {
-
-	//only test version-------------------
+//	only test version-------------------
 	ctx.fillStyle = "#66CC00"; //color for the background
 	ctx.fillRect(0, 0, cWidth, cHeight);
 	ctx.fillStyle = "#000000"; //color for the text
@@ -50,18 +51,23 @@ function prologue() {
 	ctx.fillText("press enter to begin!",100, 300);
 	//------------------------------------
 	//actual prologue will come here, a better picture would be nice as well
-
-	$(document).keydown(function(e) {
-		if (e.keyCode === 13) {					//'13' corresponds to 'enter'
-			runGame();
+	//console.log("in prologue");
+	//if (pressEnt === false) {
+	$(document).keydown(function(e) {	
+		if (e.keyCode === ent) {					//'13' corresponds to 'enter'
+			if(!pressEnt) {							//this if gets entered only for once
+				pressEnt = true;
+				runGame();
+			}
 		}
 	})
-
 }
 
 /*The GAME happens in this function. */
 function runGame() {
 	/* PLAYER OBJECT CREATED. */
+	console.log("running game");
+	console.log(pressEnt);
 	var p = new Player(cCenter.x, cCenter.y);
 	listenToArrows(true);					//arrow-keys activated
 	requestAnimationFrame(game);			//function call
@@ -71,7 +77,6 @@ function runGame() {
 		drawGame();		//Game drawn
 		//COLLISION CHECK
 		var ifCollision = collisionCheck(p, currentCont);		//returns wither item-object or null	
-		
 		if (ifCollision !== null) {
 			animationState = false;
 		}
@@ -100,7 +105,7 @@ function runGame() {
 	function gameState(item) {  /*object is either an Item or null tai null.parametri*/
 		if (item == null) {	//null means that no collisions
 			return;
-		} else {
+		} else {				//collision!
 			listenToArrows(false);
 			animationState = false;
 			console.log(item);

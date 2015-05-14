@@ -52,11 +52,12 @@ function openMission(item) {
 	ctx.fillStyle = "#000000";
 	ctx.fillText("Mission-view will come here", 100, 300);
 
-	$(document).keydown(function(e) {
-		if (e.keyCode === 13) {
-			animationState = true;
-		}
-	})
+	// $(document).keydown(function(e) {
+	// 	if (e.keyCode === 32) {
+	// 		e.preventDefault();
+	// 		animationState = true;
+	// 	} 
+	// })
 }
 
 
