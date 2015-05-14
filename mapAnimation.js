@@ -34,7 +34,12 @@ var animationState = true;
 var currentMission = null;
 
 /*PLAYER*/
-//var p = null;
+var p = null;
+
+/*collision STATE*/
+var collisionState = false;
+
+
 /*Creating the canvas before running the game. */
 function createCanvas() {
 	console.log("creating canvas...");
@@ -76,30 +81,35 @@ function prologue() {
 function runGame() {
 	/* PLAYER OBJECT CREATED. */
  //checkAnswer();
-	console.log("running game");
-	console.log(pressEnt);
-	var p = new Player(initWidth, initHeight);
+	//console.log("running game");
+	//console.log(pressEnt);
+	p = new Player(initWidth, initHeight);
 	listenToArrows(true);					//arrow-keys activated
 	requestAnimationFrame(game);			//function call
-
+}
 	/*This loops the game.*/
 	function game() {	
+		//console.log("in game");
 		drawGame();		//Game drawn
 		//COLLISION CHECK
 		var ifCollision = collisionCheck(p, currentCont);		//returns wither item-object or null	
-		if (ifCollision !== null) {			//if collision
-			animationState = false;
-		}
-		if (animationState == true) {		//if this loop is not entered, game (map-view) pauses
+		//console.log(ifCollision);
+		// if (ifCollision !== null) {			//if collision
+		// 	console.log("animation false");
+		// 	animationState = false;
+		// }
+		// if no collision or a current mission on
+		if (ifCollision === null || currentMission !== null) {		//if this loop is not entered, game (map-view) pauses
 			requestAnimationFrame(game);
 		}
-		
+
 		gameState(ifCollision);
 	}
 
 	/*Here are all elements that
 	has to be drawn in the game.*/
 	function drawGame() {
+		//console.log("in draw game");
 		clearCanvas();
 		drawMap();
 		drawItems();
@@ -111,12 +121,12 @@ function runGame() {
 
 	//"oikea vastaus -metodi kutsuisi AL:n metodia null.parametrilla."
 	function gameState(item) {  /*object is either an Item or null tai null.parametri*/
-		if (item == null) {	//null means that no collisions
+		console.log("current mission: " + currentMission);
+		if (item === null || currentMission !== null) {  //mission happening
 			return;
 		} else {				//collision!
 			listenToArrows(false);
 			animationState = false;
-			//console.log(item);
 			openMission(item);
 		} /*johtaa tehtävän tekemiseen
 		TEHTÄVÄ-oliossa täytyy olla komento, joka
@@ -190,21 +200,25 @@ function runGame() {
 				items[i].y < p.y + p.charHeight)
 				))
 				{	
-					//console.log(items[i]);
+					console.log(items[i]);
+					//console.log("in Collision");	
 					return items[i];		//returns the item-object, interrupting the for-loop
 				}	//openMission(items[i]);
 				else {
 					var output = null;
 				}
 		} 
-		//console.log(output);
+		//if (output === null) {
+			currentMission = null;
+			console.log("from collision to no-collision");
+		//}
 		return output;
 	}	//end of collisionCheck(...);
 	/*The arrow-keys' activities 
 	are defined here.*/
 	function listenToArrows(boolean) {
 		if (boolean === true) {
-		console.log("in if...");
+		console.log("in if listeningTo...");
 		$(document).keydown(function(key) {	   //WORKS!	
    			switch (key.keyCode){
 				case up:
@@ -336,7 +350,6 @@ function runGame() {
 	function clearCanvas() {
 		ctx.clearRect(0, 0, cWidth, cHeight);
 	}
-}
 
 /*this launches the whole game*/
 window.onload = createCanvas;

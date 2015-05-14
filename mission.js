@@ -35,7 +35,7 @@ var mUluru = new Mission(uluruI,"answer","clue","reaction");
 function openMission(item) {
 	showReturn();
 	showTextBox();
-	currentMission = mission
+	currentMission = mission;
 	//console.log(item.name);
 	//console.log(mParis);
 	var mission;
@@ -105,16 +105,14 @@ function drawMission(mission) {
 	ctx.font="30px Palatino";			//for later texts
 	ctx.drawImage(mission.img, 0, 0);
 	currentMission = mission;
+	console.log("currentMission in draw mission: " + currentMission);
 	// var correctAnswer = mission.answer;
 }
 
 
 
 function submitAnswer() {
-	console.log($("#answerCandidate").val() + "submitted String");
-
-
-	
+	//console.log($("#answerCandidate").val() + "submitted String");
 	var candidate = $("#answerCandidate").val()//.trim().toLowerCase();
 	//console.log(candidate);
 	//console.log(currentMission.answer);
@@ -144,6 +142,8 @@ function missionFailure(mission) {
 function backToMap() {
 	console.log("back to map");
 	animationState = true;
+	listenToArrows(true);
+	game();
 }
 
 
