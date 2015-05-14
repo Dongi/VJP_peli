@@ -26,11 +26,14 @@
       </div>
 	<div id="buttons" >
 
-		<div id="return" ><img id="returnButton" src="sini/returnArrow.png"/></div>
+		<div id="return" onclick="backToMap()"><img id="returnButton" src="sini/returnArrow.png"/></div>
 
         <div id="textBox">
-            <input type="text"></input>
-            <button id="check">Check</button>
+        	<img src="sini/papyrus2.png">
+        	<form id="textField">
+            	<input type="text" class="answerCandidate"></input>
+            	<div id="submit" onclick="submitAnswer()">Check</div>
+            </form>
         </div>
 
         <div id="clues">

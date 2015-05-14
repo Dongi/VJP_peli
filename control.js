@@ -2,6 +2,34 @@
 var hText = "Helatorstaina ei ole kukaan töissä."
 
 
+
+/*SHOW*/
+/*function shows the buttons (including the text-box.*/
+function showButtons() {
+	$(document).ready(function(){
+		$("#buttons").show();
+	})
+}
+
+function showReturn() {
+	$(document).ready(function(){
+		$("#return").show();
+	})
+}
+
+function showNext() {
+	$(document).ready(function(){
+		$("#next").show();
+	})
+}
+
+function showTextBox() {
+	$(document).ready(function(){
+		$("#textBox").show();
+	})
+}
+
+/*HIDE*/
 /*function hides the text box and the arrow-icons. */
 function hideButtons() {
 	$(document).ready(function(){
@@ -9,10 +37,21 @@ function hideButtons() {
 	})
 }
 
-/*function shows the buttons (including the text-box.*/
-function showButtons() {
+function hideReturn() {
 	$(document).ready(function(){
-		$("#buttons").show();
+		$("#return").hide();
+	})
+}
+
+function hideNext() {
+	$(document).ready(function(){
+		$("#next").hide();
+	})
+}
+
+function hideTextBox() {
+	$(document).ready(function(){
+		$("#textBox").hide();
 	})
 }
 
@@ -21,3 +60,31 @@ function toHelpText(help) {
 		$("#helpText").text(help);
 	})
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

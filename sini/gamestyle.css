@@ -1,24 +1,37 @@
 body{
 	display: inline-block;
 	width: 100%;
+	margin-bottom:10%;
 }
 
 canvas {
-/*
-background-color: #3DCC5F ;
-rgba(61, 204, 95, 0.4)
-background-image: url(paris.jpg);*/
-/*opacity: 0.6;*/
-float:left;
-
+	float:left;
 }
 
 #buttons{
+	background-color:#ffffff;  /* #FAE8F7(babypink),  #C2ECFC(babyblue), #E1F5DF(babygreen) #90EE90 parasväri*/
+	width:740px;
+	border-radius: 3px;
+}
 
-background-color:#ffffff;  /* #FAE8F7(babypink),  #C2ECFC(babyblue), #E1F5DF(babygreen) #90EE90 parasväri*/
-width:740px;
-border-radius: 3px;
+input {
+	height:30px;
+	font-size:15px;
+}
 
+#submit {
+	display:inline-block;
+	padding-top:2%;
+	padding-bottom:2%;
+	padding-left:3%;
+	padding-right:3%;
+	background-color:#E0E0E0;
+	border: 1px solid black;
+	border-radius: 10px;
+	/*background-size:30px;*/
+	font-style: italic;
+	font-size: 15px;
+	font-family:Palatino, Consolas;
 }
 
 #return {
@@ -60,9 +73,25 @@ opacity:0.5;
 }
 
 #textBox{
-	float:left;
-	padding-top:30px;
+	/*float:left;*/
+	display: inline-block;
+	position: relative;
+	/*z-index: 0;*/
+	padding-top:10px;
 	padding-left: 90px;
+}
+
+/*papyrus-image*/
+#textBox img {
+	position: relative;
+	z-index: 0;
+}
+
+#textField {
+	position: relative;
+	top: -80px;
+	right: -80px;
+	z-index: 0;
 }
 
 #clues{

@@ -1,93 +1,85 @@
-/*MISSION VARIABLES
-
-for each mission, there must be a variable that remembers if the mission is done or not
-var =
-var = 
-
-var =
-var = 
-
-var =
-var = 
-
-var =
-var = 
-
-var =
-var = 
-
-var =
-var = 
-
-*/
+/*MISSION VARIABLES*/
+//$(document).ready(function(){
 /*Mission-CLASS.*/
 function Mission(image, answer, clue, reaction) {
-	this.image = image;			//background image
+	this.state = false;			//tells whether the task is accomplished
+	this.img = image;			//background image
 	this.answer = answer;		//correct answer
 	this.clue = clue;			//when answered correct
 	this.reaction = reaction;	//when answered incorrect
+	// this.update = function() {
+	// 	if (this.state === true) 
+	// }
 }
 /*initiating the missions*/
-var mParis = Mission(,,,,);
-var mRome = Mission(,,,,);
-var mMontreal = Mission(,,,,);
-var mHavana = Mission(,,,,);
-var mBuenos = Mission(,,,,);
-var mCap = Mission(,,,,);
-var mTimbuktu = Mission(,,,,);
-var mKilimanjaro = Mission(,,,,);
-var mXian = Mission(,,,,);
-var mChennai = Mission(,,,,);
+var mParis = new Mission(parisI,"answer","clue","reaction");
+var mRome = new Mission(romeI,"answer","clue","reaction");
+
+var mMontreal = new Mission(montrealI,"answer","clue","reaction");
+var mHavana = new Mission(havanaI,"answer","clue","reaction");
+
+var mBuenos = new Mission(buenosI,"answer","clue","reaction");
+var mCape = new Mission(capeI,"answer","clue","reaction");
+
+var mTimbuktu = new Mission(timbuktuI,"answer","clue","reaction");
+var mKilimanjaro = new Mission(kilimanjaroI,"answer","clue","reaction");
+
+var mGreat = new Mission(greatI,"answer","clue","reaction");
+var mChennai = new Mission(chennaiI,"answer","clue","reaction");
+
+var mSydney = new Mission(sydneyI,"answer","clue","reaction");
+var mUluru = new Mission(uluruI,"answer","clue","reaction");
 
 
-
-	/*MISSION, Global function*/
+/*MISSION, Global function*/
 function openMission(item) {
-	showButtons();
+	showReturn();
+	showTextBox();
+	currentMission = mission
+	//console.log(item.name);
+	//console.log(mParis);
+	var mission;
 	/*making the buttons visible again*/
-
 	switch(item.name) {
 		case "paris":
-
+			mission = mParis;
 		break;
 		case "rome":
-
+			mission = mRome;
 		break;
 		case "montreal":
-
+			mission = mMontreal;
 		break;
 		case "havana":
-
+			mission = mHavana;
 		break;
 		case "buenos_aires":
-
+			mission = mBuenos;
 		break;
-		case "cap_horn":
-
+		case "cape_horn":
+			mission = mCape;
 		break;
 		case "timbuktu":
-
+			mission = mTimbuktu;
 		break;
 		case "kilimanjaro":
-
+			mission = mKilimanjaro;
 		break;
 		case "chennai":
-
+			mission = mChennai;
 		break;
-		case "xian":
-
+		case "great_wall":
+			mission = mGreat;
 		break;
 		case "sydney":
-
+			mission = mSydney;
 		break;
 		case "uluru":
-
+			mission = mUluru;
 		break;	
 	}
-
-
-
-
+	console.log(mission);
+	drawMission(mission);
 	//only for testing
 	// console.log("opening mission");
 	// ctx.fillStyle = "#FFF000";
@@ -103,26 +95,46 @@ function openMission(item) {
 	// 			pressSpace = false;
 	// 			animationState = true;
 	// 			game();
-				
 	// 			//console.log("innermost press");
 	// 		}
 	// 	} 
 	// })
 }
+/*draws the mission view*/
+function drawMission(mission) {
+	ctx.drawImage(mission.img, 0, 0);
+	currentMission = mission;
+	// var correctAnswer = mission.answer;
+}
 
-function mission() {
+/*reactions that happen after mission success*/
+function missionSuccess(mission) {
 
 }
 
 
+function missionFailure(mission) {
+
+}
+
+function submitAnswer() {
+	console.log($("#submit").val());
+	var candidate = $("#submit").val().trim().toLowerCase()
+	if (candidate === currentMission.answer) {
+		currentMission.state = true;
+		missionSuccess(currentMission);
+	} else {
+		missionFailure(currentMission);
+	}//console.log($("#answerCandidate").val());
+			//console.log("in checkInput");
+			// var input = $("input").checkInput;
+			// console.log(input);
+}
 
 
+function backToMap() {
 
-
-
-
-
-
+}
 
 
 

@@ -30,16 +30,23 @@ var arrowsOn = true;
 /*determines the state of the loop. */
 var animationState = true;
 
+/*current MISSION if there is one.*/
+var currentMission = null;
+
 /*PLAYER*/
 //var p = null;
 /*Creating the canvas before running the game. */
 function createCanvas() {
+	console.log("creating canvas...");
 	canvas = document.getElementById("canvasElement");
 	canvas.width = cWidth;
 	canvas.height = cHeight;
 
 	/*control functions for the other html-elements*/
-	hideButtons();
+	hideReturn();
+	hideNext();
+	hideTextBox();
+
 	toHelpText(hText);
 	/*---------------------------------------------*/
 
@@ -55,7 +62,8 @@ function createCanvas() {
 function prologue() {
 	ctx.drawImage(openingImage, 0, 0);
 	$(document).keydown(function(e) {	
-		if (e.keyCode === ent) {					//'13' corresponds to 'enter'
+		if (e.keyCode === ent) {
+		e.preventDefault();					//'13' corresponds to 'enter'
 			if(!pressEnt) {							//this if gets entered only for once
 				pressEnt = true;
 				runGame();
@@ -67,6 +75,7 @@ function prologue() {
 /*The GAME happens in this function. */
 function runGame() {
 	/* PLAYER OBJECT CREATED. */
+ //checkAnswer();
 	console.log("running game");
 	console.log(pressEnt);
 	var p = new Player(initWidth, initHeight);
@@ -108,7 +117,7 @@ function runGame() {
 		} else {				//collision!
 			listenToArrows(false);
 			animationState = false;
-			console.log(item);
+			//console.log(item);
 			openMission(item);
 		} /*johtaa tehtävän tekemiseen
 		TEHTÄVÄ-oliossa täytyy olla komento, joka
