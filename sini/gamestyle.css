@@ -6,6 +6,7 @@ body{
 
 canvas {
 	float:left;
+	border: 5px solid #663300;
 }
 
 #buttons{
@@ -19,17 +20,23 @@ input {
 	font-size:15px;
 }
 
+#submit:hover {
+	opacity:1;
+}
+
 #submit {
+	opacity:0.6;
 	display:inline-block;
 	padding-top:2%;
 	padding-bottom:2%;
 	padding-left:3%;
 	padding-right:3%;
 	background-color:#E0E0E0;
-	border: 1px solid black;
+	color: #663300;
+	border: 2px solid #663300;
 	border-radius: 10px;
 	/*background-size:30px;*/
-	font-style: italic;
+	font-style: italic bold;
 	font-size: 15px;
 	font-family:Palatino, Consolas;
 }
@@ -68,7 +75,8 @@ font-family:"Palatino Linotype";
 float:right;
 width: 180px;
 background-color: #ffffff ; /*#9DF794*/
-opacity:0.5;
+opacity:0.6;
+padding-top: 5px;
 /*-webkit-transform: rotate(40deg);*/
 
 }
@@ -158,9 +166,9 @@ opacity:0.5;
 #help{
 
 	float:left;
-	background-image:url(papyrus.gif);
-	width:400px;
-	height:512px;
+	background-image:url(prologue.gif);
+	width:445px;
+	height:560px;
 	opacity: 1;
 	
 }

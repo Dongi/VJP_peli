@@ -93,6 +93,10 @@ uluruI.onload = function() {
 }
 
 
+/*loading the instruction image*/
+var victoryImg = new Image();
+victoryImg.src = "sini/victory.jpg";
+
 
 
 

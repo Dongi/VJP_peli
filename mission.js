@@ -7,10 +7,9 @@ function Mission(image, answer, clue, reaction) {
 	this.answer = answer;		//correct answer
 	this.clue = clue;			//when answered correct
 	this.reaction = reaction;	//when answered incorrect
-	// this.update = function() {
-	// 	if (this.state === true) 
-	// }
+
 }
+
 /*initiating the missions*/
 var mParis = new Mission(parisI, answers.paris, clues.paris, reaction);
 var mRome = new Mission(romeI, answers.rome, clues.rome, reaction);
@@ -36,8 +35,6 @@ function openMission(item) {
 	showReturn();
 	showTextBox();
 	currentMission = mission;
-	//console.log(item.name);
-	//console.log(mParis);
 	var mission;
 	/*making the buttons visible again*/
 	switch(item.name) {
@@ -78,7 +75,7 @@ function openMission(item) {
 			mission = mUluru;
 		break;	
 	}
-	console.log(mission);
+	//console.log(mission);
 	drawMission(mission);
 	//only for testing
 	// console.log("opening mission");
@@ -105,7 +102,7 @@ function drawMission(mission) {
 	ctx.font="30px Palatino";			//for later texts
 	ctx.drawImage(mission.img, 0, 0);
 	currentMission = mission;			//sets the currentMission (global)
-	console.log("currentMission in draw mission: " + currentMission);
+	//console.log("currentMission in draw mission: " + currentMission);
 	//initiating the reaction and clue elements on top of the canvas
 	var clue = currentMission.clue;
 	var reaction = currentMission.reaction;
@@ -123,6 +120,9 @@ function submitAnswer() {
 	var candidate = $("#answerCandidate").val().trim().toLowerCase();
 	if (candidate === currentMission.answer) {
 		currentMission.state = true;
+		if (currentMission.answer === answers.chennai) {
+			victory();
+		}
 		missionSuccess(currentMission);
 	} else {
 		missionFailure(currentMission);
@@ -144,16 +144,30 @@ function missionFailure(mission) {
 }
 
 function backToMap() {
-		console.log("back to map");
-	$(".interactive").css("visibility", "hidden");
-	$("#respond").css("visibility", "hidden");	//syntax works
+	console.log("back to map");
+	$("#answerCandidate").val("");
+	hideReturn();
+	hideTextBox();
+	hideInteractive();
 	animationState = true;
 	listenToArrows(true);
 	game();
 }
 
 
+function victory() {
+	console.log("in victory");  //works!
+	hideReturn();
+	$(document).keydown(function(key) {
+		if (key.keyCode === ent) {
+			key.preventDefault();
+			hideInteractive();
+			showNext();
+			ctx.drawImage(victoryImg, 0, 0);
+		}
+	})
 
+}
 
 
 

@@ -71,6 +71,7 @@ function prologue() {
 		e.preventDefault();					//'13' corresponds to 'enter'
 			if(!pressEnt) {							//this if gets entered only for once
 				pressEnt = true;
+				$("#help").css("background-image", "url(sini/instructions.gif)");
 				runGame();
 			}
 		}
@@ -121,7 +122,7 @@ function runGame() {
 
 	//"oikea vastaus -metodi kutsuisi AL:n metodia null.parametrilla."
 	function gameState(item) {  /*object is either an Item or null tai null.parametri*/
-		console.log("current mission: " + currentMission);
+		//console.log("current mission: " + currentMission);
 		if (item === null || currentMission !== null) {  //mission happening
 			return;
 		} else {				//collision!
@@ -200,7 +201,7 @@ function runGame() {
 				items[i].y < p.y + p.charHeight)
 				))
 				{	
-					console.log(items[i]);
+					//console.log(items[i]);
 					//console.log("in Collision");	
 					return items[i];		//returns the item-object, interrupting the for-loop
 				}	//openMission(items[i]);
@@ -210,7 +211,7 @@ function runGame() {
 		} 
 		//if (output === null) {
 			currentMission = null;
-			console.log("from collision to no-collision");
+			//console.log("from collision to no-collision");
 		//}
 		return output;
 	}	//end of collisionCheck(...);
@@ -218,7 +219,7 @@ function runGame() {
 	are defined here.*/
 	function listenToArrows(boolean) {
 		if (boolean === true) {
-		console.log("in if listeningTo...");
+		//console.log("in if listeningTo...");
 		$(document).keydown(function(key) {	   //WORKS!	
    			switch (key.keyCode){
 				case up:
@@ -299,12 +300,6 @@ function runGame() {
 		}
 	}
 
-	function muteArrows() {
-		console.log("Mute arrows");
-		$(document).keydown(function(e) {
-
-		});
-	}
 	/*DRAWING FUNCTIONS-----------------------------------------------------------------------------------*/
 	
 	/*map*/
@@ -349,6 +344,10 @@ function runGame() {
 	/*CLEARING FUNCTION*/
 	function clearCanvas() {
 		ctx.clearRect(0, 0, cWidth, cHeight);
+	}
+
+	function playAgain() {
+		location.reload();
 	}
 
 /*this launches the whole game*/

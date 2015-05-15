@@ -62,8 +62,10 @@ function toHelpText(help) {
 }
 
 
-
-
+function hideInteractive() {
+	$(".interactive").css("visibility", "hidden");
+	$("#respond").css("visibility", "hidden");
+}
 
 
 
