@@ -104,19 +104,23 @@ function openMission(item) {
 function drawMission(mission) {
 	ctx.font="30px Palatino";			//for later texts
 	ctx.drawImage(mission.img, 0, 0);
-	currentMission = mission;
+	currentMission = mission;			//sets the currentMission (global)
 	console.log("currentMission in draw mission: " + currentMission);
-	// var correctAnswer = mission.answer;
+	//initiating the reaction and clue elements on top of the canvas
+	var clue = currentMission.clue;
+	var reaction = currentMission.reaction;
+	$("#clue").html(clue);
+	$("#reaction").html(reaction);
+	//console.log($("#canvasContainer").val());
 }
 
 
 
 function submitAnswer() {
-	//console.log($("#answerCandidate").val() + "submitted String");
-	var candidate = $("#answerCandidate").val()//.trim().toLowerCase();
-	//console.log(candidate);
-	//console.log(currentMission.answer);
+	hideTextBox();	//ensures that only one submit/visit
+	$(".interactive").css("visibility", "visible");
 
+	var candidate = $("#answerCandidate").val().trim().toLowerCase();
 	if (candidate === currentMission.answer) {
 		currentMission.state = true;
 		missionSuccess(currentMission);
@@ -130,17 +134,20 @@ function submitAnswer() {
 
 /*reactions that happen after mission success*/
 function missionSuccess(mission) {
-	currentMission.state = true;
-	ctx.fillText("SUCCESS", 50, 500);	//better if .show()
+	$("#clue").css("visibility", "visible");
+	//ctx.fillText("SUCCESS", 50, 500);	//better if .show()
 }
 
 
 function missionFailure(mission) {
-	ctx.fillText("FAILURE", 50, 500);	//better if .show()
+	$("#reaction").css("visibility", "visible")
+	//ctx.fillText("FAILURE", 50, 500);	//better if .show()
 }
 
 function backToMap() {
 	console.log("back to map");
+	$(".interactive").css("visibility", "hidden");
+	$("#clue, #reaction").css("visibility", "hidden");	//syntax works
 	animationState = true;
 	listenToArrows(true);
 	game();

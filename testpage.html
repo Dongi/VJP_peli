@@ -12,10 +12,14 @@
 
 </head>
 <body>
-	<div>
-		<canvas id="canvasElement">
 
-		</canvas>
+	<div id="canvasContainer">
+		<h2>The Adventures of a Globetrotter</h2>
+		<div class="interactive">
+			<p id="reaction">REACTION REACTION REACTION REACTION</p>
+			<p id="clue">CLUE CLUE CLUE CLUE</p>
+		</div>
+		<canvas id="canvas"></canvas>
 	</div>
 	<div id = "help">
             <p id ="title">Instructions</p>
@@ -26,7 +30,7 @@
       </div>
 	<div id="buttons" >
 
-		<div id="return" onclick="backToMap()"><img id="returnButton" src="sini/returnArrow.png"/></div>
+		<div id="return" onclick="backToMap()"><img id="returnButton" src="sini/return.png"/></div>
 
         <div id="textBox">
         	<img src="sini/papyrus2.png">
@@ -35,12 +39,12 @@
             	<div id="submit" onclick="submitAnswer()">Check</div>
             </form>
         </div>
-
+<!-- 
         <div id="clues">
 
-        </div>
+        </div> -->
 
-		<div id="next"><img id="nextButton" src="sini/nextArrow.png"/></div>
+		<div id="next"><img id="nextButton" src="sini/next.png"/></div>
 
 	</div>
 </body>

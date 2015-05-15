@@ -37,13 +37,13 @@ var currentMission = null;
 var p = null;
 
 /*collision STATE*/
-var collisionState = false;
+//var collisionState = false;
 
 
 /*Creating the canvas before running the game. */
 function createCanvas() {
 	console.log("creating canvas...");
-	canvas = document.getElementById("canvasElement");
+	canvas = document.getElementById("canvas");
 	canvas.width = cWidth;
 	canvas.height = cHeight;
 
