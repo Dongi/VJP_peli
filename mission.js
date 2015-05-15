@@ -99,6 +99,8 @@ function openMission(item) {
 }
 /*draws the mission view*/
 function drawMission(mission) {
+	/*mapMusic on pause*/
+	mapMusic.pause();
 	ctx.font="30px Palatino";			//for later texts
 	ctx.drawImage(mission.img, 0, 0);
 	currentMission = mission;			//sets the currentMission (global)
@@ -151,6 +153,7 @@ function backToMap() {
 	hideInteractive();
 	animationState = true;
 	listenToArrows(true);
+	mapMusic.play();
 	game();
 }
 
@@ -168,8 +171,6 @@ function victory() {
 	})
 
 }
-
-
 
 
 

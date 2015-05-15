@@ -1,0 +1,1 @@
+//var mapMusic = document.getElementById('mapMusic');

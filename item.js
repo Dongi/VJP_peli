@@ -31,7 +31,7 @@ var Kilimanjaro = new Item("kilimanjaro", 496, 236);
 var Timbuktu = new Item("timbuktu", 200, 96);
 
 var Great_Wall = new Item("great_wall", 406, 300);
-var Chennai = new Item("chennai", 140, 455);
+var Chennai = new Item("chennai", 200, 505);
 
 var Uluru = new Item("uluru", 311, 256);
 var Sydney = new Item("sydney", 510, 310);

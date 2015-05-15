@@ -80,8 +80,11 @@ function prologue() {
 
 /*The GAME happens in this function. */
 function runGame() {
+
+	/*music on*/
+	mapMusic.play();
 	/* PLAYER OBJECT CREATED. */
- //checkAnswer();
+ 	//checkAnswer();
 	//console.log("running game");
 	//console.log(pressEnt);
 	p = new Player(initWidth, initHeight);

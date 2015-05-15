@@ -45,7 +45,7 @@ buenosI.onload = function() {
 
 var capeILoaded = false;
 var capeI = new Image();
-capeI.src = "sini/missionImages/capehorn2.jpg";
+capeI.src = "sini/missionImages/capehorn.jpg";
 capeI.onload = function() {
 	capeILoaded = true;
 }
