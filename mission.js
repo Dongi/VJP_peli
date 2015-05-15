@@ -145,7 +145,7 @@ function missionFailure(mission) {
 }
 
 function backToMap() {
-	console.log("back to map");
+		console.log("back to map");
 	$(".interactive").css("visibility", "hidden");
 	$("#clue, #reaction").css("visibility", "hidden");	//syntax works
 	animationState = true;
