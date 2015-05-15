@@ -12,23 +12,23 @@ function Mission(image, answer, clue, reaction) {
 	// }
 }
 /*initiating the missions*/
-var mParis = new Mission(parisI,"answer","clue","reaction");
-var mRome = new Mission(romeI,"answer","clue","reaction");
+var mParis = new Mission(parisI, answers.paris, clues.paris, reaction);
+var mRome = new Mission(romeI, answers.rome, clues.rome, reaction);
 
-var mMontreal = new Mission(montrealI,"answer","clue","reaction");
-var mHavana = new Mission(havanaI,"answer","clue","reaction");
+var mMontreal = new Mission(montrealI, answers.montreal, clues.montreal, reaction);
+var mHavana = new Mission(havanaI, answers.havana,clues.havana, reaction);
 
-var mBuenos = new Mission(buenosI,"answer","clue","reaction");
-var mCape = new Mission(capeI,"answer","clue","reaction");
+var mBuenos = new Mission(buenosI, answers.buenos,clues.buenos, reaction);
+var mCape = new Mission(capeI, answers.cape,clues.cape, reaction);
 
-var mTimbuktu = new Mission(timbuktuI,"answer","clue","reaction");
-var mKilimanjaro = new Mission(kilimanjaroI,"answer","clue","reaction");
+var mTimbuktu = new Mission(timbuktuI,answers.timbuktu, clues.timbuktu, reaction);
+var mKilimanjaro = new Mission(kilimanjaroI,answers.kilimanjaro,clues.kilimanjaro, reaction);
 
-var mGreat = new Mission(greatI,"answer","clue","reaction");
-var mChennai = new Mission(chennaiI,"answer","clue","reaction");
+var mGreat = new Mission(greatI,answers.great,clues.great, reaction);
+var mChennai = new Mission(chennaiI,answers.chennai,clues.chennai, reaction);
 
-var mSydney = new Mission(sydneyI,"answer","clue","reaction");
-var mUluru = new Mission(uluruI,"answer","clue","reaction");
+var mSydney = new Mission(sydneyI,answers.sydney,clues.sydney, reaction);
+var mUluru = new Mission(uluruI,answers.uluru,clues.uluru, reaction);
 
 
 /*MISSION, Global function*/
@@ -109,8 +109,8 @@ function drawMission(mission) {
 	//initiating the reaction and clue elements on top of the canvas
 	var clue = currentMission.clue;
 	var reaction = currentMission.reaction;
-	$("#clue").html(clue);
-	$("#reaction").html(reaction);
+	//$("#clue").html(clue);
+	// $("#reaction").html(reaction);
 	//console.log($("#canvasContainer").val());
 }
 
@@ -126,28 +126,27 @@ function submitAnswer() {
 		missionSuccess(currentMission);
 	} else {
 		missionFailure(currentMission);
-	}//console.log($("#answerCandidate").val());
-			//console.log("in checkInput");
-			// var input = $("input").checkInput;
-			// console.log(input);
+	}
 }
 
 /*reactions that happen after mission success*/
 function missionSuccess(mission) {
-	$("#clue").css("visibility", "visible");
+	$("#respond").html(mission.clue);
+	$("#respond").css("visibility", "visible");
 	//ctx.fillText("SUCCESS", 50, 500);	//better if .show()
 }
 
 
 function missionFailure(mission) {
-	$("#reaction").css("visibility", "visible")
+	$("#respond").html(mission.reaction);
+	$("#respond").css("visibility", "visible");
 	//ctx.fillText("FAILURE", 50, 500);	//better if .show()
 }
 
 function backToMap() {
 		console.log("back to map");
 	$(".interactive").css("visibility", "hidden");
-	$("#clue, #reaction").css("visibility", "hidden");	//syntax works
+	$("#respond").css("visibility", "hidden");	//syntax works
 	animationState = true;
 	listenToArrows(true);
 	game();

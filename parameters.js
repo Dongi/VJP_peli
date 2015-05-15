@@ -11,13 +11,11 @@ var clues = {
 	uluru:"The couple had been staying at his farm in Alice Springs for a few weeks and became friends with one of his other visitors, Emmanuel. Emmanuel was from Tanzania, Africa, and wanted to show his home to his new friends. All three of them left for Tanzania to visit Africa’s highest mountain, Kilimanjaro. ",
 	kilimanjaro:"Emmanuel was a sweet young man with a pocketful of stories to tell. Reetta, tired from her chase, stayed with Emmanuel for a few nights before taking the road again. Emmanuel told her that Kamran with his girlfriend had headed off to Asia, to see one of the seven wonders of the world; The Great Wall of China.",
 	great:"At the Wall Reetta met many travelers from all around the world. Suddenly a Japanese boy named Shin recognized the camera she was carrying with her.  He told Reetta that he and Kamran had become friends a few months back when he was here with his girlfriend - or fiancée actually. He had proposed to Catalina here on the Great Wall. Shin had offered to take a picture of the engaged couple but sadly Kamran had lost his camera. They are going to have their wedding in Chennai, India, in a week.",
-	chennai:"When Reetta walked into the garden she saw a few familiar faces among the crowd; Catalina’s parents, Emmanuel, the Australian tour guide and Niccolo Raffaelli from Rome. They were all here to celebrate Kamran’s and Catalina’s marriage that was going to take place tomorrow. Finally Reetta could return the camera to its owner and as a thank you Kamran invited her to their wedding. She was the guest of honor. 
-			What an adventure !"
+	chennai:"When Reetta walked into the garden she saw a few familiar faces among the crowd; Catalina’s parents, Emmanuel, the Australian tour guide and Niccolo Raffaelli from Rome. They were all here to celebrate Kamran’s and Catalina’s marriage that was going to take place tomorrow. Finally Reetta could return the camera to its owner and as a thank you Kamran invited her to their wedding. She was the guest of honor. What an adventure !"
 }
 
 
-var reaction = "Your answer was incorrect. Are you sure you have completed the tasks in the correct order? 
-				Please read again the previous clue.";
+var reaction = "Your answer was incorrect. Are you sure you have completed the tasks in the correct order? Please read again the previous clue.";
 
 
 
@@ -38,20 +36,20 @@ var answers = {
 	chennai:"shin"
 }
 
-var mParis = new Mission(parisI, answers.paris,clues.paris,reaction);
-var mRome = new Mission(romeI, answers.rome,clues.rome, reaction);
+// var mParis = new Mission(parisI, answers.paris,clues.paris,reaction);
+// var mRome = new Mission(romeI, answers.rome,clues.rome, reaction);
 
-var mMontreal = new Mission(montrealI,answers.montreal,clues.montreal, reaction);
-var mHavana = new Mission(havanaI,answers.havana,clues.havana, reaction);
+// var mMontreal = new Mission(montrealI,answers.montreal,clues.montreal, reaction);
+// var mHavana = new Mission(havanaI,answers.havana,clues.havana, reaction);
 
-var mBuenos = new Mission(buenosI,answers.buenos,clues.buenos, reaction);
-var mCape = new Mission(capeI,answers.cape,clues.cape, reaction);
+// var mBuenos = new Mission(buenosI,answers.buenos,clues.buenos, reaction);
+// var mCape = new Mission(capeI,answers.cape,clues.cape, reaction);
 
-var mTimbuktu = new Mission(timbuktuI,answers.timbuktu,clues.timbuktu, reaction);
-var mKilimanjaro = new Mission(kilimanjaroI,answers.kilimanjaro,clues.kilimanjaro, reaction);
+// var mTimbuktu = new Mission(timbuktuI,answers.timbuktu,clues.timbuktu, reaction);
+// var mKilimanjaro = new Mission(kilimanjaroI,answers.kilimanjaro,clues.kilimanjaro, reaction);
 
-var mGreat = new Mission(greatI,answers.great,clues.great, reaction);
-var mChennai = new Mission(chennaiI,answers.chennai,clues.chennai, reaction);
+// var mGreat = new Mission(greatI,answers.great,clues.great, reaction);
+// var mChennai = new Mission(chennaiI,answers.chennai,clues.chennai, reaction);
 
-var mSydney = new Mission(sydneyI,answers.sydney,clues.sydney, reaction);
-var mUluru = new Mission(uluruI,answers.uluru,clues.uluru, reaction);
+// var mSydney = new Mission(sydneyI,answers.sydney,clues.sydney, reaction);
+// var mUluru = new Mission(uluruI,answers.uluru,clues.uluru, reaction);

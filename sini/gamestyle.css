@@ -161,7 +161,7 @@ opacity:0.5;
 	background-image:url(papyrus.gif);
 	width:400px;
 	height:512px;
-	opacity: 0.6;
+	opacity: 1;
 	
 }
 
@@ -241,7 +241,7 @@ opacity:0.5;
 	visibility:hidden;
 }
 
-#reaction {
+#respond {
 	visibility:hidden;
 }
 
